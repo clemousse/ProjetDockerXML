@@ -18,7 +18,7 @@ Avant de puller une image, si votre Docker fonctionne derrière un proxy, pensez
 
 * un exemple sous Debian Wheezy, dans le répertoire /etc/default/, il s'agit du fichier **docker** :
 
-![Configuration proxy](proxy.png)
+![Configuration proxy](snapshots/proxy.png)
 
 Pour ne pas avoir de problème de proxy par la suite tout au long de votre travail, lancez le container **[klabs/forgetproxy](https://hub.docker.com/r/klabs/forgetproxy/)** (accessible sur Docker Hub) en tâche de fond (-d) :
 
@@ -32,18 +32,18 @@ Dans le cas où nous sommes à l'ENSG, ***myproxy*** sera ***10.0.4.2***
 
 ##2. Création du dockerfile (qui permet de construire l'image)
 
-![Dockerfile](dockerfile.png)
+![Dockerfile](snapshots/dockerfile.png)
 
 **Pour construire l'image à partir du répertoire dans lequel se trouve le dockerfile et dans lequel on est (grâce au ".") :**
 
 >docker build -t clementine:xml .
 
-![Résultat docker build partie 1](docker_build1.png)
-![Résultat docker build partie 2](docker_build2.png)
+![Résultat docker build partie 1](snapshots/docker_build1.png)
+![Résultat docker build partie 2](snapshots/docker_build2.png)
 
 ... et l'image est bien là !
 
-![Résultat docker images](docker_images.png)
+![Résultat docker images](snapshots/docker_images.png)
 
 ##3. Création du container et exécution de la validation xml
 
@@ -63,11 +63,11 @@ un exemple :
 
 >docker run -v /home/gtsi/test:/home/xml clementine:xml ./script_validationXML.sh annuaire
 
-![Résultat docker run](docker_run.png)
+![Résultat docker run](snapshots/docker_run.png)
 
 ... et le container est bien créé en effet !
 
-![Résultat docker ps](docker_ps.png)
+![Résultat docker ps](snapshots/docker_ps.png)
 
 ##3. Sources diverses (parmi tant d'autres...)
 
