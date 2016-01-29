@@ -37,11 +37,14 @@ Voici une vue du dockerfile qui a permis de construire l'image.
 ![Dockerfile](snapshots/dockerfile.png)
 
 Voici la commande qui a permis de construire l'image à partir du dockerfile :
-On se trouve actuellement dans le répertoire contenant le dockerfile (cf => <code>.</code>)
+on se trouve actuellement dans le répertoire contenant le dockerfile (cf => <code>.</code>) et l'on tag notre image clementine:xml (<code>-t</code>).
 
 ><code>docker build -t clementine:xml .</code>
 
 ![Résultat docker build partie 1](snapshots/docker_build1.png)
+
+... pendant ce temps, les mises à jour se font et libxml2 s'installe dans le container...
+
 ![Résultat docker build partie 2](snapshots/docker_build2.png)
 
 ... et l'image est bien là !
