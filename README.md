@@ -60,7 +60,7 @@ Vous pouvez pour la suite utiliser cette dernière directement depuis Docker Hub
 
 ><code>docker run -v **CheminFichier**:/home/xml clemousse/xml:xml ./script_validationXML.sh **FichierXML**</code>
 
-**CheminFichier** contient le chemin absolu de vos fichiers xml et xsd sur votre machine. ces derniers doivent se situer tous les deux dans le même répertoire, et porter le même nom.
+**CheminFichier** contient le chemin absolu de vos fichiers xml et xsd sur votre machine. Ces derniers doivent se situer tous les deux dans le même répertoire, et porter le même nom.
 
 Grâce à <code>-v</code>, toutes les données écrites dans **CheminFichier** seront copiées dans /home/xml dans le container. Docker a ainsi monté le répertoire de votre machine **CheminFichier** sur le répertoire /home/xml du container pour que les deux puissent communiquer entre eux.
 
