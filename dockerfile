@@ -17,11 +17,11 @@ RUN mkdir /home/script
 # écriture du script de validation XML/XSD dans le fichier script_validationXML.sh à l'intérieur de /home/script
 # \n = pour retourner à la ligne dans le script shell
 # \$1 = \ est mis pour conserver l'écriture littérale de la variable $1
-#      $1 est le nom de la variable shell qui contient le premier paramètre d'un script. Dans celui créé ici, il n'y en a qu'une. 
+#      $1 est le nom de la variable shell qui contient le premier paramètre d'un script. Dans celui créé ici, il n'y en a qu'un. 
 
 RUN echo "#!/bin/bash \nxmllint /home/xml/\$1.xml --schema /home/xml/\$1.xsd  --noout" > /home/script/script_validationXML.sh
 
-# droit de lecture, écriture et d'execution sur script_validationXML.sh
+# droit de lecture, écriture et d'exécution sur script_validationXML.sh
 
 RUN chmod 744 /home/script/script_validationXML.sh
 
