@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Annuaire quoi="TSI2015"
+	xmlns="File:///home/gtsi/XML"
+	xmlns:TSI2015="File:///home/gtsi/XML"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="File:///home/gtsi/XML/annuaire.xsd">
+
+	<Personne nom="pensier" prenom="philemon" service="ENSG" lieu="MLV">
+		<fonction>Étudiant</fonction>
+	</Personne>
+
+	<Personne nom="Amiri" prenom="Mohammed" service="ENSG" lieu="MLV">
+		<fonction>Étudiant</fonction>
+	</Personne>
+
+	<Personne nom="ELJABIRI" prenom="Hanane" service="ENSG" lieu="MLV">
+		<fonction>Étudiant</fonction>
+	</Personne>
+	
+	<Personne nom="SASYAN" prenom="Valentin" service="ENSG" lieu="MLV">
+		<fonction>Étudiant</fonction>
+	</Personne>
+	
+	<Personne nom="AIACHE" prenom="Amina" service="ENSG" lieu="MLV">
+		<fonction>Étudiant</fonction>
+	</Personne>
+
+	<Personne nom="Kraus" prenom="Alban" service="ENSG" lieu="MLV">
+		<fonction>Étudiant</fonction>
+	</Personne>
+	
+	<Personne nom="HOUNTONHADJA" prenom="Maxwell Francis" service="ENSG" lieu="MLV">
+		<fonction>Étudiant</fonction>
+	</Personne>
+
+	<Personne nom="Milville" prenom="Romain" service="ENSG" lieu="MLV">
+		<fonction>Étudiant</fonction>
+	</Personne>
+
+	<Personne nom="LAMGHARI" prenom="HATIM" service="ENSG" lieu="MLV">
+		<fonction>Étudiant</fonction>
+	</Personne>
+
+	<Personne nom="BIH" prenom="imane" service="ENSG" lieu="MLV">
+		<fonction>Étudiant</fonction>
+	</Personne>
+
+	<Personne nom="Chasles" prenom="Clémentine" service="ENSG" lieu="MLV">
+		<fonction>Étudiant</fonction>
+	</Personne>
+
+	<Personne nom="Drissi" prenom="Nisrine" service="ENSG" lieu="MLV">
+		<fonction>Étudiant</fonction>
+	</Personne>
+
+	<Employeur nom="IGN">
+		<direction nom="DRE">
+			<service nom="ENSG" effectif="13" />
+		</direction>
+	</Employeur>
+
+	<lieu nom="MLV">
+		<Adresse>
+			École nationale des sciences géographiques
+			6-8 avenue Blaise Pascal – Champs-sur-Marne
+			77455 MLV CEDEX 2
+		</Adresse>
+	</lieu>
+
+</Annuaire>

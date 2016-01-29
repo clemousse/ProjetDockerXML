@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<xs:schema xmlns:TSI15="File:///home/gtsi/XML" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="File:///home/gtsi/XML" 
+	elementFormDefault="qualified" version="0.0.1">
+
+	<xs:element name="Annuaire">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="TSI15:Personne" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element ref="TSI15:Employeur" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element ref="TSI15:lieu" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="quoi" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+
+		<xs:element name="Personne">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="fonction" type="xs:string"/>
+				</xs:sequence>
+				<xs:attribute name="nom" type="xs:string"/>
+				<xs:attribute name="prenom" type="xs:string"/>
+				<xs:attribute name="service" type="xs:IDREF"/>
+				<xs:attribute name="lieu" type="xs:IDREF"/>
+			</xs:complexType>
+		</xs:element>
+
+		<xs:element name="Employeur">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element ref="TSI15:direction"/>
+				</xs:sequence>
+				<xs:attribute name="nom" type="xs:string"/>
+			</xs:complexType>
+		</xs:element>
+					
+			<xs:element name="direction">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="TSI15:service"/>
+					</xs:sequence>
+					<xs:attribute name="nom" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+
+				<xs:element name="service">
+					<xs:complexType>
+						<xs:attribute name="nom" type="xs:ID"/>
+						<xs:attribute name="effectif" type="xs:positiveInteger"/>
+					</xs:complexType>
+				</xs:element>
+
+		<xs:element name="lieu">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="Adresse" type="xs:string"/>
+				</xs:sequence>
+				<xs:attribute name="nom" type="xs:ID"/>
+			</xs:complexType>
+		</xs:element>
+
+</xs:schema>
