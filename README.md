@@ -20,15 +20,15 @@ Avant de puller une image, si votre Docker fonctionne derrière un proxy, pensez
 
 ![Configuration proxy](snapshots/proxy.png)
 
-Pour ne pas avoir de problème de proxy par la suite tout au long de votre travail, lancez le container **[klabs/forgetproxy](https://hub.docker.com/r/klabs/forgetproxy/)** (accessible sur Docker Hub) en tâche de fond (-d) :
+Pour ne pas avoir de problème de proxy par la suite tout au long de votre travail, lancez le container **[klabs/forgetproxy](https://hub.docker.com/r/klabs/forgetproxy/)** (accessible sur Docker Hub) en tâche de fond (<code>-d</code>) :
 
->docker run -d --net=host --privileged -e http_proxy=http://***myproxy***:3128 -e https_proxy=http://***myproxy***:3128 klabs/forgetproxy
+><code>docker run -d --net=host --privileged -e http_proxy=http://***myproxy***:3128 -e https_proxy=http://***myproxy***:3128 klabs/forgetproxy</code>
 
 Dans le cas où nous sommes à l'ENSG, ***myproxy*** sera ***10.0.4.2***
 
 *NB : Une fois votre travail terminé, il vous faudra rétablir les règles de proxy par défaut avant de supprimer votre container :*
 
->*docker run --net=host --privileged klabs/forgetproxy stop*
+>*<code>docker run --net=host --privileged klabs/forgetproxy stop</code>*
 
 ##2. Création du dockerfile (qui permet de construire l'image)
 
@@ -39,7 +39,7 @@ Voici une vue du dockerfile qui a permis de construire l'image.
 Voici la commande qui a permis de construire l'image à partir du dockerfile :
 On se trouve actuellement dans le répertoire contenant le dockerfile (cf => <code>.</code>)
 
->docker build -t clementine:xml .
+><code>docker build -t clementine:xml .</code>
 
 ![Résultat docker build partie 1](snapshots/docker_build1.png)
 ![Résultat docker build partie 2](snapshots/docker_build2.png)
@@ -50,11 +50,11 @@ On se trouve actuellement dans le répertoire contenant le dockerfile (cf => <co
 
 ##3. Création du container et exécution de la validation xml
 
->docker run -v ***votreRepertoireFichier***:/home/xml clementine:xml ./script_validationXML.sh ***nomFichier***
+><code>docker run -v ***votreRepertoireFichier***:/home/xml clementine:xml ./script_validationXML.sh ***nomFichier***</code>
 
 ***votreRepertoireFichier*** = indiquez le chemin absolu de vos fichiers xml et xsd qui doivent se situer dans le même répertoire
 
-Grâce à -v, toutes les données écrites dans ***votreRepertoireFichier*** seront copiées dans /home/xml. Docker a ainsi monté le répertoire
+Grâce à <code>-v</code>, toutes les données écrites dans ***votreRepertoireFichier*** seront copiées dans /home/xml. Docker a ainsi monté le répertoire
 de la machine hôte ***votreRepertoireFichier*** sur /home/xml dans le container pour que les deux puissent communiquer entre eux.
 
 **clementine:xml** est le nom de l'image disponible sur Docker Hub => repository:tag
@@ -64,7 +64,7 @@ de la machine hôte ***votreRepertoireFichier*** sur /home/xml dans le container
 
 un exemple :
 
->docker run -v /home/gtsi/test:/home/xml clementine:xml ./script_validationXML.sh annuaire
+><code>docker run -v /home/gtsi/test:/home/xml clementine:xml ./script_validationXML.sh annuaire</code>
 
 ![Résultat docker run](snapshots/docker_run.png)
 
