@@ -20,7 +20,7 @@ Avant de puller une image, si votre Docker fonctionne derrière un proxy, pensez
 
 ![Configuration proxy](proxy.png)
 
-Pour ne pas avoir de problème de proxy par la suite tout au long de votre travail, lancez le container **klabs/forgetproxy** (accessible sur Docker Hub) en tâche de fond (-d) :
+Pour ne pas avoir de problème de proxy par la suite tout au long de votre travail, lancez le container **[klabs/forgetproxy](https://hub.docker.com/r/klabs/forgetproxy/)** (accessible sur Docker Hub) en tâche de fond (-d) :
 
 >docker run -d --net=host --privileged -e http_proxy=http://***myproxy***:3128 -e https_proxy=http://***myproxy***:3128 klabs/forgetproxy
 
