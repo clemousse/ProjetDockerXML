@@ -54,19 +54,20 @@ on se trouve actuellement dans le répertoire contenant le dockerfile (cf => <co
 
 Le lien vers l'image sur Docker Hub : **<https://hub.docker.com/r/clemousse/xml/>**.
 
-Vous pouvez pour la suite utiliser cette dernière directement à depsui Docker Hub.
+Vous pouvez pour la suite utiliser cette dernière directement depuis Docker Hub.
 
 ##3. Création du container et exécution de la validation xml
 
 ><code>docker run -v **CheminFichier**:/home/xml clemousse/xml:xml ./script_validationXML.sh **FichierXML**</code>
 
-**CheminFichier** contient le chemin absolu de vos fichiers xml et xsd qui doivent se situer tous les deux dans le même répertoire, et porter le même nom.
+**CheminFichier** contient le chemin absolu de vos fichiers xml et xsd sur votre machine. ces derniers doivent se situer tous les deux dans le même répertoire, et porter le même nom.
 
 Grâce à <code>-v</code>, toutes les données écrites dans **CheminFichier** seront copiées dans /home/xml dans le container. Docker a ainsi monté le répertoire de votre machine **CheminFichier** sur le répertoire /home/xml du container pour que les deux puissent communiquer entre eux.
 
 **clemousse/xml:xml** est le nom de l'image disponible sur Docker Hub => repository:tag
 
 **./script_validationXML.sh** correspond à l'éxecution du script <code>script_validationXML.sh</code>.
+
 **FichierXML** est le nom unique pour vos deux fichiers xml/xsd, qui constitue le paramètre qui sera donné à la variable $1. (cf. dockerfile).
 
 Un exemple :
