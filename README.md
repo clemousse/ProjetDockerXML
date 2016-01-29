@@ -2,7 +2,7 @@
 
 ##1. Installation de Docker
 
-Rendez-vous sur le site ***<https://docs.docker.com/>*** et choississez l'installation de Docker adéquate en fonction de votre système d'exploitation.
+Rendez-vous sur le site **<https://docs.docker.com/>** et choississez l'installation de Docker adéquate en fonction de votre système d'exploitation.
 
 Docker ne tourne que sous Linux et les configurations requises sont les suivantes :
 
@@ -16,7 +16,7 @@ Cependant, on peut installer une Docker ToolBox pour créer une machine virtuell
 
 Avant de puller une image, si votre Docker fonctionne derrière un proxy, pensez à le configurer :
 
-* un exemple sous Debian Wheezy, dans le répertoire /etc/default/, il s'agit du fichier **docker**:
+* un exemple sous Debian Wheezy, dans le répertoire /etc/default/, il s'agit du fichier **docker** :
 
 ![Configuration proxy](proxy.png)
 
@@ -30,11 +30,11 @@ Dans le cas où nous sommes à l'ENSG, ***myproxy*** sera ***10.0.4.2***
 
 >*docker run --net=host --privileged klabs/forgetproxy stop*
 
-##2. Création du dockerfile (construit l'image qui sera ensuite déposée sur docker hub)
+##2. Création du dockerfile (qui permet de construire l'image)
 
 ![Dockerfile](dockerfile.png)
 
-**Pour construire l'image à partir du repertoire dans lequel se trouve le dockerfile et dans lequel on est (.)**
+**Pour construire l'image à partir du répertoire dans lequel se trouve le dockerfile et dans lequel on est (grâce au ".") :**
 
 >docker build -t clementine:xml .
 
@@ -45,13 +45,13 @@ Dans le cas où nous sommes à l'ENSG, ***myproxy*** sera ***10.0.4.2***
 
 ![Résultat docker images](docker_images.png)
 
-##3. Création du container et execution de la validation xml
+##3. Création du container et exécution de la validation xml
 
 >docker run -v ***votreRepertoireFichier***:/home/xml clementine:xml ./script_validationXML.sh ***nomFichier***
 
 ***votreRepertoireFichier*** = indiquez le chemin absolu de vos fichiers xml et xsd qui doivent se situer dans le même répertoire
 
-Grâce à -v, toutes les données écrites dans ***votreRepertoireFichier*** seront copiées dans /home/xml. Docker a ainsi monté le repertoire
+Grâce à -v, toutes les données écrites dans ***votreRepertoireFichier*** seront copiées dans /home/xml. Docker a ainsi monté le répertoire
 de la machine hôte ***votreRepertoireFichier*** sur /home/xml dans le container pour que les deux puissent communiquer entre eux.
 
 **clementine:xml** est le nom de l'image disponible sur Docker Hub => repository:tag
