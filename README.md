@@ -32,9 +32,12 @@ Dans le cas où nous sommes à l'ENSG, ***myproxy*** sera ***10.0.4.2***
 
 ##2. Création du dockerfile (qui permet de construire l'image)
 
+Voici une vue du dockerfile qui a permis de construire l'image.
+
 ![Dockerfile](snapshots/dockerfile.png)
 
-**Pour construire l'image à partir du répertoire dans lequel se trouve le dockerfile et dans lequel on est (grâce au ".") :**
+Voici la commande qui a permis de construire l'image à partir du dockerfile :
+On se trouve actuellement dans le répertoire contenant le dockerfile (cf => <code>.</code>)
 
 >docker build -t clementine:xml .
 
