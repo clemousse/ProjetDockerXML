@@ -1,4 +1,4 @@
-# Application permettant de valider un XML et son XSD sur une machine supportant Docker
+# Application permettant de valider un XML et son XSD sur une machine supportant Docker.
 
 ##1. Installation de Docker
 
@@ -20,21 +20,22 @@ Avant de puller une image, si votre Docker fonctionne derrière un proxy, pensez
 
 ![Configuration proxy](snapshots/proxy.png)
 
-Pour ne pas avoir de problème de proxy par la suite tout au long de votre travail, lancez le container **[klabs/forgetproxy](https://hub.docker.com/r/klabs/forgetproxy/)** (accessible sur Docker Hub) en tâche de fond (<code>-d</code>). L’idée est d’intercepter les connections sortantes de Docker et de les forcer à transiter via le proxy. Docker en lui-même fonctionne comme s’il avait un accès direct à internet.
+Pour pouvoir par la suite travailler avec l'image dont nous aurons besoin pour lancer un container qui validera nos fichiers xml/xsd, il vous faut créer un environnement qui la rend "portable", c'est-à-dire utilisable quelque soit votre proxy et son port.
+Pour cela, vous devez lancez la commande suivante : 
 
-En pratique, nous nous appuyons sur redsocks pour « proxifier » nos connections.
-Une fois notre serveur configuré, nous routons le trafic sortant en provenance de l’interface docker vers redsocks grâce à des règles iptables.
 ><code>docker run -d --net=host --privileged -e http_proxy=http://***myproxy***:3128 -e https_proxy=http://***myproxy***:3128 klabs/forgetproxy</code>
 
-Dans le cas où nous sommes à l'ENSG, ***myproxy*** sera ***10.0.4.2***
+Pour plus d'explications sur l'image **[klabs/forgetproxy](https://hub.docker.com/r/klabs/forgetproxy/)** que vous avez ainsi lancée dans un container en tâche de fond (<code>-d</code>), rendez-vous [ici](<http://blog.kaliop.com/blog/2015/05/26/docker-dans-la-vraie-vie-les-parties-delicates/#ancre1>) et [là](https://hub.docker.com/r/klabs/forgetproxy/)
+.
+Dans notre cas, le proxy ***myproxy*** sera ***10.0.4.2***
 
 *NB : Une fois votre travail terminé, il vous faudra rétablir les règles de proxy par défaut avant de supprimer votre container :*
 
 >*<code>docker run --net=host --privileged klabs/forgetproxy stop</code>*
 
-##2. Création du dockerfile (qui permet de construire l'image)
+##2. Création du dockerfile
 
-Voici une vue du dockerfile qui a permis de construire l'image.
+Voici une vue du dockerfile détaillé qui a permis de construire l'image.
 
 ![Dockerfile](snapshots/dockerfile.png)
 
@@ -53,11 +54,14 @@ on se trouve actuellement dans le répertoire contenant le dockerfile (cf => <co
 
 ![Résultat docker images](snapshots/docker_images.png)
 
+Le lien vers l'image sur Docker Hub : **<https://hub.docker.com/r/clemousse/xml/>**.
+Vous pouvez pour la suite l'utiliser directement à partir de Docker Hub.
+
 ##3. Création du container et exécution de la validation xml
 
 ><code>docker run -v ***votreRepertoireFichier***:/home/xml clementine:xml ./script_validationXML.sh ***nomFichier***</code>
 
-***votreRepertoireFichier*** = indiquez le chemin absolu de vos fichiers xml et xsd qui doivent se situer dans le même répertoire
+***votreRepertoireFichier*** =contient le chemin absolu de vos fichiers xml et xsd qui doivent se situer dans le même répertoire
 
 Grâce à <code>-v</code>, toutes les données écrites dans ***votreRepertoireFichier*** seront copiées dans /home/xml. Docker a ainsi monté le répertoire
 de la machine hôte ***votreRepertoireFichier*** sur /home/xml dans le container pour que les deux puissent communiquer entre eux.
