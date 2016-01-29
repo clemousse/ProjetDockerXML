@@ -82,11 +82,11 @@ Un exemple :
 
 ##3. Sources diverses (parmi tant d'autres...)
 
-###Sur le fonctionnement général de Docker :
+###Pour le fonctionnement et l'utilisation de Docker en général :
   - <https://docs.docker.com/>
   - <https://www.wanadev.fr/>
 
-###Pour les problèmes de proxy : 
+###Pour la gestion du proxy et la portabilité : 
   - <http://blog.kaliop.com/blog/2015/05/26/docker-dans-la-vraie-vie-les-parties-delicates/#ancre1>
 
 ###Pour l'installation et l'utilisation de xmllint :
